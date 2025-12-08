@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshaya Center - Bill Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="bill-wrapper">
+            <!-- Header Section -->
+            <div class="bill-header">
+                <h1>AKSHAYA E CENTER NERIAMANGALAM</h1>
+                <p class="pin-code">Pin Code: 686693</p>
+            </div>
+
+            <!-- Bill Info Section -->
+            <div class="bill-info">
+                <div class="info-row">
+                    <div class="info-item">
+                        <label>Bill No.:</label>
+                        <input type="text" id="billNo" class="editable-field" readonly>
+                    </div>
+                    <div class="info-item">
+                        <label>Date:</label>
+                        <input type="date" id="billDate" class="editable-field date-picker">
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-item full-width">
+                        <label>To:</label>
+                        <input type="text" id="customerName" class="editable-field" placeholder="Customer Name">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill Table -->
+            <table class="bill-table" id="billTable">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Services</th>
+                        <th>Rate</th>
+                        <th>Rs.</th>
+                        <th class="no-print">P.</th>
+                    </tr>
+                </thead>
+                <tbody id="billTableBody">
+                    <!-- Rows will be added dynamically -->
+                </tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td colspan="2"></td>
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong id="grandTotal">0.00</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons no-print">
+                <button class="btn btn-add" onclick="addRow()">+ Add Service</button>
+                <button class="btn btn-clear-form" onclick="clearForm()">🗑️ Clear Form</button>
+                <button class="btn btn-search" onclick="openSearchModal()">🔍 Search Bills</button>
+                <button class="btn btn-print" onclick="printBill()">🖨️ Print Bill</button>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="bill-footer">
+
+                <div class="signature-section">
+                    <p><strong>Authorised Signatory</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Modal -->
+        <div id="searchModal" class="modal no-print">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Search Bills</h2>
+                    <button class="close-btn" onclick="closeSearchModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label>Customer Name:</label>
+                            <input type="text" id="searchCustomer" placeholder="Enter customer name">
+                        </div>
+                        <div class="filter-group">
+                            <label>Date:</label>
+                            <input type="date" id="searchDate">
+                        </div>
+                        <div class="filter-group">
+                            <label>Bill Number:</label>
+                            <input type="text" id="searchBillNo" placeholder="Enter bill number">
+                        </div>
+                        <button class="btn btn-search-action" onclick="searchBills()">Search</button>
+                        <button class="btn btn-clear" onclick="clearSearch()">Clear</button>
+                    </div>
+                    <div id="searchResults" class="search-results">
+                        <!-- Search results will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
